@@ -1,5 +1,6 @@
 package com.wanted.preonboarding.ticket.entity;
 
+import com.wanted.preonboarding.ticket.dto.request.PerformanceUpdateRequestDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,5 +38,19 @@ public class Performance {
     private Date start_date;
     @Column(nullable = false, name = "is_reserve", columnDefinition = "varchar default 'disable'")
     private String isReserve;
+
+    public void updatePerformance(PerformanceUpdateRequestDto performanceUpdateRequestDto) {
+        this.name = performanceUpdateRequestDto.getName();
+        this.price = performanceUpdateRequestDto.getPrice();
+        this.round = performanceUpdateRequestDto.getRound();
+        this.type = performanceUpdateRequestDto.getType();
+
+        if (performanceUpdateRequestDto.getStart_date() != null) {
+            this.start_date = performanceUpdateRequestDto.getStart_date();
+        }
+        if (performanceUpdateRequestDto.getIsReserve() != null) {
+            this.isReserve = performanceUpdateRequestDto.getIsReserve();
+        }
+    }
 
 }
