@@ -7,9 +7,8 @@ services:
     volumes:
       - ${HOST_VOLUME}
       - ${CONTAINER_VOLUME}
-    command:
-      - '--character-set-server=utf8mb4'
-      - '--collation-server=utf8mb4_unicode_ci'
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
+      LANG: C.UTF_8
       MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
       MYSQL_DATABASE: wanted
