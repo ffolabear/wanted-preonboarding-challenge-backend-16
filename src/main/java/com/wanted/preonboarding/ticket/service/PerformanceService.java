@@ -5,6 +5,7 @@ import com.wanted.preonboarding.ticket.dto.request.PerformanceUpdateRequestDto;
 import com.wanted.preonboarding.ticket.dto.response.PerformanceResponseDto;
 import com.wanted.preonboarding.ticket.entity.Performance;
 import com.wanted.preonboarding.ticket.entity.PerformanceEventDto;
+import com.wanted.preonboarding.ticket.mapper.PerformanceMapper;
 import com.wanted.preonboarding.ticket.repository.PerformanceRepository;
 import com.wanted.preonboarding.ticket.service.event.UpdatePerformanceEvent;
 import java.util.List;
@@ -46,10 +47,11 @@ public class PerformanceService {
                 .findById(performanceId)
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 공연입니다."));
         performance.updatePerformance(performanceUpdateRequestDto);
-        eventPublisher.publishEvent(UpdatePerformanceEvent.builder()
-                .updatePerformanceId(performanceId)
-                .performanceName(performance.getName())
-                .build());
+        eventPublisher.publishEvent(
+                UpdatePerformanceEvent.builder()
+                        .updatePerformanceId(performanceId)
+                        .performanceName(performance.getName())
+                        .build());
         return performanceId;
     }
 

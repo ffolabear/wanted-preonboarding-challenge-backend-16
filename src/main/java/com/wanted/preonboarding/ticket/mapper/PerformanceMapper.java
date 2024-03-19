@@ -1,4 +1,4 @@
-package com.wanted.preonboarding.ticket.service;
+package com.wanted.preonboarding.ticket.mapper;
 
 import com.wanted.preonboarding.ticket.dto.request.PerformanceRequestDto;
 import com.wanted.preonboarding.ticket.dto.response.PerformanceResponseDto;
